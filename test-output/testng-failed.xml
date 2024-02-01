@@ -5,8 +5,8 @@
     <classes>
       <class name="com.Amazon.TestCases.LoginTest">
         <methods>
+          <include name="loginApplication"/>
           <include name="initializeDriverAfterBrowserFactory"/>
-          <include name="loginApplication1"/>
         </methods>
       </class> <!-- com.Amazon.TestCases.LoginTest -->
     </classes>

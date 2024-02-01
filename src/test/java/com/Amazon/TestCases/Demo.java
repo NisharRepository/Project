@@ -1,5 +1,7 @@
 package com.Amazon.TestCases;
 
+import java.util.Scanner;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,10 +15,15 @@ public class Demo extends BaseTest  {
 	public void loginApplication1() throws InterruptedException {
 		  
 		  //Verify successful login with valid credentials.
-		  
+			
+		  Scanner sc = new Scanner(System.in);
+		  System.out.print("Please Enter User ID & Password");
+		  String userID =sc.nextLine();
+		  String password = sc.nextLine();
+		  sc.close();
 		  LoginPage loginpage = new LoginPage( driver);	
 		  loginpage.goToApplication();
-		  loginpage.loginApplication("9337561245", "9038497506");
+		  loginpage.loginApplication(userID, password);
 		 
 		  String pageURL=loginpage.getUrl();
 		  System.out.println(pageURL);

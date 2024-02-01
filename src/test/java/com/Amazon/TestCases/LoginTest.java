@@ -1,5 +1,7 @@
 package com.Amazon.TestCases;
 
+import java.util.Scanner;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -75,11 +77,16 @@ public class LoginTest extends BaseTest {
 	  
 	  //Verify successful login with valid credentials.
 	  
+	  Scanner sc = new Scanner(System.in);
+	  System.out.print("Please Enter User ID & Password");
+	  String userID =sc.nextLine();
+	  String password = sc.nextLine();
+	  sc.close();
 	  LoginPage loginpage = new LoginPage( driver);	
 	  loginpage.goToApplication();
-	  loginpage.loginApplication("9337561245", "9038497506");
+	  loginpage.loginApplication(userID, password);
 	 
-	  String pageURL=driver.getCurrentUrl();
+	  String pageURL=loginpage.getUrl();
 	  System.out.println(pageURL);
 		Assert.assertEquals(pageURL, "https://www.amazon.in/?_encoding=UTF8&ref_=nav_em_hd_re_signin","homepage or Expected URL does not load successfully" );
 		//OR
