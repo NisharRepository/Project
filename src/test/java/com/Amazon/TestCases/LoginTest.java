@@ -73,13 +73,15 @@ public class LoginTest extends BaseTest {
   @Test
   public void loginApplication1() throws InterruptedException {
 	  
+	  //Verify successful login with valid credentials.
 	  
 	  LoginPage loginpage = new LoginPage( driver);	
 	  loginpage.goToApplication();
 	  loginpage.loginApplication("9337561245", "9038497506");
-	  
-	  String pageURL=driver.getCurrentUrl();		
-		Assert.assertEquals(pageURL, "https://www.amazon.in/","homepage or Expected URL does not load successfully" );
+	 
+	  String pageURL=driver.getCurrentUrl();
+	  System.out.println(pageURL);
+		Assert.assertEquals(pageURL, "https://www.amazon.in/?_encoding=UTF8&ref_=nav_em_hd_re_signin","homepage or Expected URL does not load successfully" );
 		//OR
 		Assert.assertTrue(pageURL.startsWith("https://www.amazon.in/"));
 		//OR

@@ -6,14 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.Amazon.Core.BasePage;
 import com.Amazon.Utilities.SyncUtil;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 	
 	private WebDriver driver;
 	private SyncUtil syncUtil;
 	
 	public LoginPage(WebDriver driver) {
+		super(driver);
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 		this.syncUtil = new SyncUtil(driver);
