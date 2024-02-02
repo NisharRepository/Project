@@ -9,18 +9,65 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import com.Amazon.Core.BaseTest;
+import com.Amazon.Pages.RegistrationPage;
 
 public class RegistrationTest extends BaseTest{
 	
+	String userName = "Cool Nish";
+	String mobileNumber = "9337561245";
+	String password = "9038497506" ;
+	
+	
 	@Test
-	public void accountCreation() throws InterruptedException {
+	public void accountCreation() {
+		
+		//Verify successful user registration with valid information.
+		
+		RegistrationPage registrationpage = new RegistrationPage(driver);//we can place this object creation in BaseTest as we did for LoginPage
+		registrationpage.initiateAccountCreation();
+		registrationpage.accountDetail(userName, mobileNumber, password);
+	}
+	
+	@Test	
+	public void missingFieldsErrorMessagesTest () {
+		
+		//Test registration with missing required fields (e.g., email, password).
+		
+		RegistrationPage registrationpage = new RegistrationPage(driver);
+		registrationpage.initiateAccountCreation();
+		registrationpage.accountDetail(null, mobileNumber, password);
+		
+		// Locate the error message elements
+        WebElement usernameError = driver.findElement(By.cssSelector("#auth-customerName-missing-alert .a-alert-content"));
+        WebElement mobileNumberError = driver.findElement(By.cssSelector("#auth-phoneNumber-missing-alert .a-alert-content"));
+        
+//        if(usernameError.isDisplayed() || mobileNumberError.isDisplayed()) {
+//        	System.out.println("Test Passed: Error messages displayed for missing fields");
+//        }
+//        else {
+//        	System.out.println("Test Failed: Error messages not displayed for missing fields");
+//        }
+        
+        //OR
+        if(usernameError.getText().contains(" Enter your mobile number") || mobileNumberError.isDisplayed()) {
+        	System.out.println("Test Passed: Error messages displayed for missing fields");
+        }
+        else {
+        	System.out.println("Test Failed: Error messages not displayed for missing fields");
+        }
+		
+	}
+	
+	
+	@Test
+	public void accountCreation1() throws InterruptedException {
 		
 		//Verify successful user registration with valid information.
 		
 		driver.get("https://www.amazon.in/");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		Actions a = new Actions(driver);
-		WebElement accountLists = driver.findElement(By.cssSelector("#nav-link-accountList>.nav-line-2 "));
+		WebElement accountLists = driver.findElement(By.cssSelector("#nav-link-accountList>.nav-line-2"));
 		a.moveToElement(accountLists).build().perform();
 		driver.findElement(By.cssSelector(".nav_pop_new_cust [href*='register']")).click();
 		
@@ -36,7 +83,7 @@ public class RegistrationTest extends BaseTest{
 	}
 	
 	@Test
-	public void missingFieldsErrorMessagesTest () {
+	public void missingFieldsErrorMessagesTest1 () {
 		
 		//Test registration with missing required fields (e.g., email, password).
 		

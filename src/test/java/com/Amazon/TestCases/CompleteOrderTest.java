@@ -7,7 +7,7 @@ import com.Amazon.Pages.CartPage;
 import com.Amazon.Pages.CheckoutPage;
 import com.Amazon.Pages.ProductCatalogPage;
 
-public class StandaloneTest extends BaseTest {
+public class CompleteOrderTest extends BaseTest {
 	
 	@Test
 	public void Amazon() throws InterruptedException {		  

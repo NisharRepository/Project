@@ -41,6 +41,10 @@ public class SyncUtil {
 			e.printStackTrace();
 			}	
 	}
+	
+	public void implicitWait(int sec) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
+	}
 
 	
 	
