@@ -37,6 +37,15 @@ public class RegistrationPage extends BasePage {
 	@FindBy(css =".auth-require-fields-match")
 	WebElement password;
 	
+	@FindBy(css = "#auth-customerName-missing-alert .a-alert-content")
+	WebElement usernameError;
+	
+	@FindBy(css = "#auth-phoneNumber-missing-alert .a-alert-content")
+	WebElement mobileNumberError;
+	
+	@FindBy(css = ".a-list-item")
+	WebElement RegistrationError;
+	
 	public void initiateAccountCreation() {
 		syncUtil.implicitWait(15);
 		Actions a = new Actions(driver);
@@ -52,6 +61,21 @@ public class RegistrationPage extends BasePage {
             mobileNumber.sendKeys(mobile);
         }
 		password.sendKeys(pass+Keys.ENTER);
+		
+	}
+	
+	public String getNameErrorText() {
+		return usernameError.getText();
+		
+	}
+	
+	public String getMobileErrorText() {
+		return mobileNumberError.getText();
+		
+	}
+	
+	public String getRegistrationErrorText() {
+		return RegistrationError.getText();
 		
 	}
 	

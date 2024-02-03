@@ -16,8 +16,38 @@ import com.Amazon.Pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 	
+	
 	@Test
-	public void loginApplication() throws InterruptedException {
+	  public void loginApplication() throws InterruptedException {
+		  
+		  //Verify successful login with valid credentials.
+		  
+		  Scanner sc = new Scanner(System.in);
+		  System.out.print("Please Enter User ID & Password");
+		  String userID =sc.nextLine();
+		  String pass = sc.nextLine();
+		  sc.close();
+		  LoginPage loginpage = new LoginPage( driver);	
+		  loginpage.goToApplication();
+		  loginpage.loginApplication(userID, pass);
+		 
+		  String pageURL=loginpage.getUrl();
+		  System.out.println(pageURL);
+			Assert.assertEquals(pageURL, "https://www.amazon.in/?_encoding=UTF8&ref_=nav_em_hd_re_signin","homepage or Expected URL does not load successfully" );
+			//OR
+			Assert.assertTrue(pageURL.startsWith("https://www.amazon.in/"));
+			//OR
+			if(pageURL.contains("https://www.amazon.in/")) {
+				System.out.println("Verification Successful - homepage or Expected URL loads successfully");
+			}
+			else {
+				System.out.println("Verification Successful - homepage or Expected URL does not load successfully");
+			}
+		  
+	  }
+	
+	@Test
+	public void loginApplication1() throws InterruptedException {
 		
 		//Verify successful login with valid credentials.		
 		
@@ -29,11 +59,11 @@ public class LoginTest extends BaseTest {
 		try {
 		WebElement userName = driver.findElement(By.cssSelector("[name='email']"));
 		if(userName.isEnabled()) {
-			userName.sendKeys("9337561245"+Keys.ENTER);
+			userName.sendKeys(mobileNumber +Keys.ENTER);
 		}
-		WebElement password = driver.findElement(By.cssSelector("[name='password']"));
-		if(password.isEnabled()== true) {
-			password.sendKeys("9038497506"+Keys.ENTER);
+		WebElement passwod = driver.findElement(By.cssSelector("[name='password']"));
+		if(passwod.isEnabled()== true) {
+			passwod.sendKeys(password + Keys.ENTER);
 		}
 		}
 		catch (NoSuchElementException e) {
@@ -72,32 +102,5 @@ public class LoginTest extends BaseTest {
 		
 	}
 	
-  @Test
-  public void loginApplication1() throws InterruptedException {
-	  
-	  //Verify successful login with valid credentials.
-	  
-	  Scanner sc = new Scanner(System.in);
-	  System.out.print("Please Enter User ID & Password");
-	  String userID =sc.nextLine();
-	  String password = sc.nextLine();
-	  sc.close();
-	  LoginPage loginpage = new LoginPage( driver);	
-	  loginpage.goToApplication();
-	  loginpage.loginApplication(userID, password);
-	 
-	  String pageURL=loginpage.getUrl();
-	  System.out.println(pageURL);
-		Assert.assertEquals(pageURL, "https://www.amazon.in/?_encoding=UTF8&ref_=nav_em_hd_re_signin","homepage or Expected URL does not load successfully" );
-		//OR
-		Assert.assertTrue(pageURL.startsWith("https://www.amazon.in/"));
-		//OR
-		if(pageURL.contains("https://www.amazon.in/")) {
-			System.out.println("Verification Successful - homepage or Expected URL loads successfully");
-		}
-		else {
-			System.out.println("Verification Successful - homepage or Expected URL does not load successfully");
-		}
-	  
-  }
+  
 }

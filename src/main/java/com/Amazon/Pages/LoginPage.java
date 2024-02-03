@@ -34,10 +34,10 @@ public class LoginPage extends BasePage {
 			
 	@FindBy(css = "[name='password']")
 	WebElement userPassword;
-			
-	public ProductCatalogPage loginApplication(String mobile,String password) throws InterruptedException {
+	
+	public ProductSearchPage loginApplication(String mobile,String password) throws InterruptedException {
 		allMenu.click();
-		SyncUtil.wait(1);
+		//SyncUtil.wait(1);
 		syncUtil.waitInSec(1);
 		helloSignIn.click();
 		if(userEmail.isEnabled()) {
@@ -46,10 +46,26 @@ public class LoginPage extends BasePage {
 		if(userPassword.isEnabled()== true) {
 			userPassword.sendKeys(password +Keys.ENTER);
 		}
-		ProductCatalogPage productcatalogpage = new ProductCatalogPage(driver);
-		return productcatalogpage;
+		ProductSearchPage productSearchPage = new ProductSearchPage(driver);
+		return productSearchPage;
 		
 	}
+			
+//	public ProductCatalogPage loginApplication(String mobile,String password) throws InterruptedException {
+//		allMenu.click();
+//		//SyncUtil.wait(1);
+//		syncUtil.waitInSec(1);
+//		helloSignIn.click();
+//		if(userEmail.isEnabled()) {
+//			userEmail.sendKeys(mobile + Keys.ENTER);
+//		}
+//		if(userPassword.isEnabled()== true) {
+//			userPassword.sendKeys(password +Keys.ENTER);
+//		}
+//		ProductCatalogPage productcatalogpage = new ProductCatalogPage(driver);
+//		return productcatalogpage;
+//		
+//	}
 	
 	public void goToApplication() {
 		driver.get("https://www.amazon.in/");

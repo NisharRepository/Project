@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.Amazon.Core.BaseTest;
@@ -13,11 +14,7 @@ import com.Amazon.Pages.RegistrationPage;
 
 public class RegistrationTest extends BaseTest{
 	
-	String userName = "Cool Nish";
-	String mobileNumber = "9337561245";
-	String password = "9038497506" ;
-	
-	
+		
 	@Test
 	public void accountCreation() {
 		
@@ -37,26 +34,54 @@ public class RegistrationTest extends BaseTest{
 		registrationpage.initiateAccountCreation();
 		registrationpage.accountDetail(null, mobileNumber, password);
 		
-		// Locate the error message elements
-        WebElement usernameError = driver.findElement(By.cssSelector("#auth-customerName-missing-alert .a-alert-content"));
-        WebElement mobileNumberError = driver.findElement(By.cssSelector("#auth-phoneNumber-missing-alert .a-alert-content"));
+		String expectedTextForNameError = "Enter your name";
+        String expectedTextForMobileError = "Enter your mobile number";
         
-//        if(usernameError.isDisplayed() || mobileNumberError.isDisplayed()) {
-//        	System.out.println("Test Passed: Error messages displayed for missing fields");
-//        }
-//        else {
-//        	System.out.println("Test Failed: Error messages not displayed for missing fields");
-//        }
-        
-        //OR
-        if(usernameError.getText().contains(" Enter your mobile number") || mobileNumberError.isDisplayed()) {
+      //Validation for Missing information
+        if(registrationpage.getNameErrorText().contains(expectedTextForNameError) || registrationpage.getMobileErrorText().contains(expectedTextForMobileError)) {
         	System.out.println("Test Passed: Error messages displayed for missing fields");
         }
         else {
         	System.out.println("Test Failed: Error messages not displayed for missing fields");
         }
+        
+        //OR
+        Assert.assertTrue(registrationpage.getNameErrorText().contentEquals(expectedTextForNameError),"Error messages not displayed for missing fields");
+        //OR
+		Assert.assertEquals(registrationpage.getNameErrorText(), expectedTextForNameError);
+        
 		
 	}
+	
+	@Test
+	public void registrationWithExistingEmail() {
+		
+		//Test registration with a pre-existing mobile Number or username
+		
+		RegistrationPage registrationpage = new RegistrationPage(driver);
+		registrationpage.initiateAccountCreation();
+		registrationpage.accountDetail(userName, mobileNumber, password);
+		
+		String expectedTextForRegistrationError = "You indicated you are a new customer, but an account already exists with the mobile phone number";
+		System.out.println(registrationpage.getRegistrationErrorText());
+		//Validation for  Error received for Registration with Existing Mobile
+        if(registrationpage.getRegistrationErrorText().contains(expectedTextForRegistrationError)) {
+        	System.out.println("Test Passed: Error messages displayed for Registration with Existing Mobile");
+        }
+        else {
+        	System.out.println("Test Failed: Error messages not displayed for Registration with Existing Mobile");
+        }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	@Test
@@ -71,9 +96,9 @@ public class RegistrationTest extends BaseTest{
 		a.moveToElement(accountLists).build().perform();
 		driver.findElement(By.cssSelector(".nav_pop_new_cust [href*='register']")).click();
 		
-		driver.findElement(By.cssSelector(".auth-autofocus")).sendKeys("Cool Nish");
-		driver.findElement(By.cssSelector(".auth-require-phone-validation")).sendKeys("9337561245");
-		driver.findElement(By.cssSelector(".auth-require-fields-match")).sendKeys("9038497506"+Keys.ENTER);
+		driver.findElement(By.cssSelector(".auth-autofocus")).sendKeys(userName);
+		driver.findElement(By.cssSelector(".auth-require-phone-validation")).sendKeys(mobileNumber);
+		driver.findElement(By.cssSelector(".auth-require-fields-match")).sendKeys(password +Keys.ENTER);
 		
 		driver.switchTo().frame(driver.findElement(By.xpath("iframe[@id='cvf-aamation-challenge-iframe']")));//frame not working
 		
@@ -81,6 +106,8 @@ public class RegistrationTest extends BaseTest{
 		Thread.sleep(5000);
 		driver.findElement(By.cssSelector(".sc-nkuzb1-0")).click();
 	}
+	
+	
 	
 	@Test
 	public void missingFieldsErrorMessagesTest1 () {
@@ -97,7 +124,7 @@ public class RegistrationTest extends BaseTest{
 		
 		driver.findElement(By.cssSelector(".auth-autofocus"));
 		driver.findElement(By.cssSelector(".auth-require-phone-validation"));
-		driver.findElement(By.cssSelector(".auth-require-fields-match")).sendKeys("9038497506"+Keys.ENTER);
+		driver.findElement(By.cssSelector(".auth-require-fields-match")).sendKeys(password +Keys.ENTER);
 		
 		// Locate the error message elements
         WebElement usernameError = driver.findElement(By.cssSelector("#auth-customerName-missing-alert .a-alert-content"));

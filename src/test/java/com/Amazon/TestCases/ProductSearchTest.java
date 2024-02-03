@@ -15,9 +15,43 @@ import com.Amazon.Pages.ProductSearchPage;
 
 public class ProductSearchTest extends BaseTest{
 	
-	@Test
 	
-	public void sigleKeywordSearch() throws InterruptedException {
+	@Test
+	public void sigleKeywordSearch()throws InterruptedException {
+		
+		String ItemsToSearch = "laptop";
+		ProductSearchPage productSearchPage=loginpage.loginApplication(mobileNumber, password);
+		//productSearchPage.productSearch1(ItemsToSearch);
+		productSearchPage.productSearch(ItemsToSearch);		
+			
+		//Confirm that the search results include products related to all entered keywords.
+					
+		Assert.assertEquals(productSearchPage.getsearchResultText().toUpperCase(), "\"LAPTOP\"");
+		//OR
+		Assert.assertTrue(productSearchPage.getsearchResultText().contains("\"LAPTOP\""));
+		//OR
+	    if(productSearchPage.getsearchResultText().startsWith("\"LAPTOP\"")) {
+			System.out.println("Verification Successful - search result displays products related to " +ItemsToSearch+" keyword");
+			}
+		else {
+			System.out.println("Verification Failed");
+			}		
+	}
+	
+	@Test
+	public void multipleKeywordSearch() throws InterruptedException {	
+		//String ItemsToSearch = "Laptop cover";
+		ProductSearchPage productSearchPage=loginpage.loginApplication(mobileNumber, password);				
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the Item you want to Search: ");
+		String ItemsToSearch = sc.nextLine();
+		productSearchPage.productSearch1(ItemsToSearch);
+		sc.close();		
+	}
+		
+		
+	@Test
+	public void sigleKeywordSearch1() throws InterruptedException {
 		String searchedItem = "laptop";
 		//Accessing webSite
 		driver.get("https://www.amazon.in/");
@@ -29,12 +63,12 @@ public class ProductSearchTest extends BaseTest{
 		
 		WebElement userName = driver.findElement(By.cssSelector("[name='email']"));
 		if(userName.isEnabled()) {
-			userName.sendKeys("9337561245"+Keys.ENTER);
+			userName.sendKeys(mobileNumber +Keys.ENTER);
 		}
 		
-		WebElement password = driver.findElement(By.cssSelector("[name='password']"));
-		if(password.isEnabled()== true) {
-			password.sendKeys("9038497506"+Keys.ENTER);
+		WebElement passwod = driver.findElement(By.cssSelector("[name='password']"));
+		if(passwod.isEnabled()== true) {
+			passwod.sendKeys(password +Keys.ENTER);
 		}
 	
 	//Product search for the product  "laptop"
@@ -83,7 +117,7 @@ public class ProductSearchTest extends BaseTest{
 	
 	
 	@Test
-	public void multipleKeywordSearch() {
+	public void multipleKeywordSearch1() {
 		
 		//Accessing webSite
 		driver.get("https://www.amazon.in/");
@@ -109,7 +143,7 @@ public class ProductSearchTest extends BaseTest{
 	   String searchedItem = "laptop";
 	   LoginPage loginpage = new LoginPage( driver);	
 	   loginpage.goToApplication();
-	   loginpage.loginApplication("9337561245", "9038497506");
+	   loginpage.loginApplication(mobileNumber, password);
 	   ProductSearchPage productsearchpage = new ProductSearchPage(driver);
 	   productsearchpage.productSearch(searchedItem);
 	   

@@ -11,6 +11,10 @@ public class BaseTest {
 	protected WebDriver driver;
 	public LoginPage loginpage;
 	
+	protected String userName = "Cool Nish";
+	protected String mobileNumber = "9337...";
+	protected String password = "9038..." ;
+	
 	//@BeforeMethod
 	public void initializeDriver() {
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\Browser-Driver\\chromedriver-win64\\chromedriver.exe");
