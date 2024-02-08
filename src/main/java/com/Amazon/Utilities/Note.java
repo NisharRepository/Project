@@ -17,5 +17,24 @@ public class Note {
 //	a-private SyncUtil syncUtil;
 //	b-this.syncUtil = new SyncUtil(driver);//use this statement in contructor of the loginpage
 //	c- use the method of SyncUtil Class
+	
+	
+	//***************ScreenShot************
+	
+//	To Take Screen of any WebPage in Selenium we have one Interface TakesScreenshot
+//
+//	1-we cannot create Object Directly for any Interface so we will cast Driver int TakesScreenshot( as Through driver only we open any Browser)
+//	TakesScreenshot ts = (TakesScreeshot)driver;
+//
+//	2-Now we can get Screenshot putting a file Type storing into a variable so that we can use it futher
+//	File file = ts.getScreenshotAs(OutputType.FILE);
+//
+//	3-Now we have to store in our local Machine for that we have to use another Class "FileUtils"
+//
+//	FileUtils.copyFile(srcFile, DestFile);
+//	srcFile = file 
+//	DestFile is the Path where you want store ie  new File("./Screenshots/image.jpeg")
+//
+//	FileUtils.copyFile(file, new File("./Screenshots/image.jpeg"));
 
 }
