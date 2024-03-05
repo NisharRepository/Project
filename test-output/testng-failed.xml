@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Amazon.TestCases.ProductSearchTest">
+      <class name="com.Amazon.TestCases.CartTest">
         <methods>
+          <include name="goToCartPage"/>
           <include name="initializeDriverAfterBrowserFactory"/>
-          <include name="sigleKeywordSearch1"/>
         </methods>
-      </class> <!-- com.Amazon.TestCases.ProductSearchTest -->
+      </class> <!-- com.Amazon.TestCases.CartTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

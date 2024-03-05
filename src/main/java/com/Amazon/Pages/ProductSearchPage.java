@@ -1,5 +1,7 @@
 package com.Amazon.Pages;
 
+import java.util.List;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,10 +30,16 @@ public class ProductSearchPage {
 	@FindBy(css = ".a-color-state.a-text-bold")
 	WebElement searchResult;
 	
+	//
+	
+	@FindBy(css = ".left-pane-results-container div.s-suggestion[aria-label*='laptop']")
+	List <WebElement> suggestedItems;
+	
 	public void productSearch1(String searchItem) {
 		if(searchBar.isEnabled()) {
-			searchBar.sendKeys(searchItem + Keys.ENTER);
+			searchBar.sendKeys(searchItem);
 		}
+		
 	}
 	
 	
@@ -49,6 +57,23 @@ public class ProductSearchPage {
 		syncUtil.waitInSec(2);
 		return searchResult.getText();
 	}
+	
+	public void clickCorrectlySpelledSuggestion(String correctSpelling) {
+		for(WebElement suggestedItem: suggestedItems) {
+			if(suggestedItem.getText().toLowerCase().contains(correctSpelling.toLowerCase())) {
+				suggestedItem.click();
+				break;// Assuming you want to click the first matching suggestion
+			}
+		}
+       
+	}
+
+	public boolean areSuggestionsDisplayed() {
+		syncUtil.waitInSec(1);
+		return !suggestedItems.isEmpty();
+	}
+
+	
 	
 
 }

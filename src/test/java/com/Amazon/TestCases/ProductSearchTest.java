@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import com.Amazon.Core.BaseTest;
 import com.Amazon.Pages.LoginPage;
 import com.Amazon.Pages.ProductSearchPage;
+import com.Amazon.Utilities.Screenshot;
 
 public class ProductSearchTest extends BaseTest{
 	
@@ -41,12 +42,29 @@ public class ProductSearchTest extends BaseTest{
 	@Test
 	public void multipleKeywordSearch() throws InterruptedException {	
 		//String ItemsToSearch = "Laptop cover";
+		
 		ProductSearchPage productSearchPage=loginpage.loginApplication(mobileNumber, password);				
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the Item you want to Search: ");
 		String ItemsToSearch = sc.nextLine();
 		productSearchPage.productSearch1(ItemsToSearch);
 		sc.close();		
+	}
+	
+	@Test
+	public void misspelledKeywords() {
+		//Test searching with misspelled keywords and check for suggestions.
+		ProductSearchPage productSearchPage = new ProductSearchPage(driver);
+		productSearchPage.productSearch1("Latop");
+		
+		// Verify that suggestions are displayed
+	    Assert.assertTrue(productSearchPage.areSuggestionsDisplayed(), "Suggestions should be displayed.");
+	    
+	    productSearchPage.clickCorrectlySpelledSuggestion("Laptop");
+	    
+	    
+
+		
 	}
 		
 		
