@@ -13,7 +13,7 @@ public class CompleteOrderTest extends BaseTest {
 	public void Amazon() throws InterruptedException {		  
 		  
 		  
-		  ProductCatalogPage productcatalogpage = loginpage.loginApplication("9337561245", "9038497506");	
+		  ProductCatalogPage productcatalogpage = loginpage.loginApplication("933....", "9038...");	
 		  
 		  productcatalogpage.navigateToMainMenu("Mobiles, Computers");
 		  productcatalogpage.navigateToSubMenu("All Mobile Phones");
