@@ -1,5 +1,6 @@
 package com.Amazon.TestCases;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.openqa.selenium.By;
@@ -53,17 +54,37 @@ public class ProductSearchTest extends BaseTest{
 	
 	@Test
 	public void misspelledKeywords() {
+		
+		String ItemsToSearch = "Latop";
 		//Test searching with misspelled keywords and check for suggestions.
 		ProductSearchPage productSearchPage = new ProductSearchPage(driver);
-		productSearchPage.productSearch1("Latop");
+		productSearchPage.productSearch1(ItemsToSearch);
 		
 		// Verify that suggestions are displayed
 	    Assert.assertTrue(productSearchPage.areSuggestionsDisplayed(), "Suggestions should be displayed.");
 	    
-	    productSearchPage.clickCorrectlySpelledSuggestion("Laptop");
-	    
-	    
+	    productSearchPage.clickCorrectlySpelledSuggestion("Laptop");  
 
+		
+	}
+	
+	@Test	
+	public void insensitivitySearch() throws InterruptedException {
+		
+		//Check for case insensitivity in search queries and check for suggestions.
+		ProductSearchPage productSearchPage = new ProductSearchPage(driver);
+		productSearchPage.productSearch1("apPLe");
+		
+		// Verify that suggestions are displayed
+		Assert.assertTrue(productSearchPage.areSuggestionsDisplayed(), "Suggestion should be displayed");
+		
+		// Verify if suggestions are equal to the search items case-insensitively
+		
+		Assert.assertTrue(productSearchPage.suggestionsEqualSearchItems("Apple"), "Suggestions are not equal");
+		
+	
+		
+		
 		
 	}
 		

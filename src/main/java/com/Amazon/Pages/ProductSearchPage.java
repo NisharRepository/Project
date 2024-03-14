@@ -32,7 +32,8 @@ public class ProductSearchPage {
 	
 	//
 	
-	@FindBy(css = ".left-pane-results-container div.s-suggestion[aria-label*='laptop']")
+	
+	@FindBy(css = ".s-suggestion")
 	List <WebElement> suggestedItems;
 	
 	public void productSearch1(String searchItem) {
@@ -72,8 +73,17 @@ public class ProductSearchPage {
 		syncUtil.waitInSec(1);
 		return !suggestedItems.isEmpty();
 	}
-
 	
+	public boolean suggestionsEqualSearchItems(String searchItem) {
+		boolean found = false;
+        for (WebElement suggestedItem : suggestedItems) {
+            if (suggestedItem.getText().toLowerCase().contains(searchItem.toLowerCase())) {
+               found =true;
+               break;
+            }
+        }
+        return found;
+	}
 	
 
 }
