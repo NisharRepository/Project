@@ -15,7 +15,7 @@ public class Note {
 //	create one instance like below 
 //
 //	a-private SyncUtil syncUtil;
-//	b-this.syncUtil = new SyncUtil(driver);//use this statement in contructor of the loginpage
+//	b-this.syncUtil = new SyncUtil(driver);//use this statement in constructor of the loginpage
 //	c- use the method of SyncUtil Class
 	
 	
@@ -23,7 +23,7 @@ public class Note {
 	
 //	To Take Screen of any WebPage in Selenium we have one Interface TakesScreenshot
 //
-//	1-we cannot create Object Directly for any Interface so we will cast Driver int TakesScreenshot( as Through driver only we open any Browser)
+//	1-we cannot create Object Directly for any Interface so we will cast Driver into TakesScreenshot( as Through driver only we open any Browser)
 //	TakesScreenshot ts = (TakesScreeshot)driver;
 //
 //	2-Now we can get Screenshot putting a file Type storing into a variable so that we can use it futher
@@ -36,5 +36,8 @@ public class Note {
 //	DestFile is the Path where you want store ie  new File("./Screenshots/image.jpeg")
 //
 //	FileUtils.copyFile(file, new File("./Screenshots/image.jpeg"));
+	
+	
+	//***************ExtentReport************
 
 }

@@ -5,7 +5,7 @@
     <classes>
       <class name="com.Amazon.TestCases.ProductSearchTest">
         <methods>
-          <include name="insensitivitySearch"/>
+          <include name="multipleKeywordSearch"/>
           <include name="initializeDriverAfterBrowserFactory"/>
         </methods>
       </class> <!-- com.Amazon.TestCases.ProductSearchTest -->

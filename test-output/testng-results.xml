@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="6" total="7" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-14T11:41:52 IST" name="Default suite" finished-at="2024-03-14T11:41:56 IST" duration-ms="4515">
+  <suite started-at="2024-03-21T19:53:52 IST" name="FunctionalTesting" finished-at="2024-03-21T19:54:06 IST" duration-ms="13265">
     <groups>
     </groups>
-    <test started-at="2024-03-14T11:41:52 IST" name="Default test" finished-at="2024-03-14T11:41:56 IST" duration-ms="4515">
-      <class name="com.Amazon.TestCases.ProductSearchTest">
-        <test-method is-config="true" signature="initializeDriverAfterBrowserFactory()[pri:0, instance:com.Amazon.TestCases.ProductSearchTest@647e447]" started-at="2024-03-14T11:41:52 IST" name="initializeDriverAfterBrowserFactory" finished-at="2024-03-14T11:41:55 IST" duration-ms="3134" status="PASS">
+    <test started-at="2024-03-21T19:53:52 IST" name="Functional" finished-at="2024-03-21T19:54:06 IST" duration-ms="13265">
+      <class name="com.Amazon.TestCases.FunctionalTest">
+        <test-method is-config="true" signature="initializeDriverAfterBrowserFactory()[pri:0, instance:com.Amazon.TestCases.FunctionalTest@619713e5]" started-at="2024-03-21T19:53:52 IST" name="initializeDriverAfterBrowserFactory" finished-at="2024-03-21T19:53:58 IST" duration-ms="5218" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeDriverAfterBrowserFactory -->
-        <test-method signature="insensitivitySearch()[pri:0, instance:com.Amazon.TestCases.ProductSearchTest@647e447]" started-at="2024-03-14T11:41:55 IST" name="insensitivitySearch" finished-at="2024-03-14T11:41:56 IST" duration-ms="1349" status="PASS">
+        <test-method signature="getUrl()[pri:0, instance:com.Amazon.TestCases.FunctionalTest@619713e5]" started-at="2024-03-21T19:53:58 IST" name="getUrl" finished-at="2024-03-21T19:53:59 IST" duration-ms="1418" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- insensitivitySearch -->
-      </class> <!-- com.Amazon.TestCases.ProductSearchTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- getUrl -->
+        <test-method is-config="true" signature="initializeDriverAfterBrowserFactory()[pri:0, instance:com.Amazon.TestCases.FunctionalTest@619713e5]" started-at="2024-03-21T19:53:59 IST" name="initializeDriverAfterBrowserFactory" finished-at="2024-03-21T19:54:02 IST" duration-ms="3155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeDriverAfterBrowserFactory -->
+        <test-method signature="getSignButton()[pri:0, instance:com.Amazon.TestCases.FunctionalTest@619713e5]" started-at="2024-03-21T19:54:02 IST" name="getSignButton" finished-at="2024-03-21T19:54:06 IST" duration-ms="3421" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSignButton -->
+      </class> <!-- com.Amazon.TestCases.FunctionalTest -->
+    </test> <!-- Functional -->
+  </suite> <!-- FunctionalTesting -->
 </testng-results>

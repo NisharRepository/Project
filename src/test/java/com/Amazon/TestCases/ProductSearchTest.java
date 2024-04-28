@@ -1,5 +1,6 @@
 package com.Amazon.TestCases;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,13 +8,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.Amazon.Core.BaseTest;
 import com.Amazon.Pages.LoginPage;
 import com.Amazon.Pages.ProductSearchPage;
-import com.Amazon.Utilities.Screenshot;
 
 public class ProductSearchTest extends BaseTest{
 	
@@ -81,12 +83,31 @@ public class ProductSearchTest extends BaseTest{
 		// Verify if suggestions are equal to the search items case-insensitively
 		
 		Assert.assertTrue(productSearchPage.suggestionsEqualSearchItems("Apple"), "Suggestions are not equal");
-		
+	}	
 	
+	
+	@Test	
+	public void filterSearch() {
 		
+		//Verify that advanced search filters work as expected.
+		ProductSearchPage productSearchPage = new ProductSearchPage(driver);
+		productSearchPage.productSearch("mobile");
 		
+		// Wait for mobile brands to be visible
+	    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("#brandsRefinements span.a-size-base")));
+		
+		List<WebElement> mobileBrands = driver.findElements(By.cssSelector("#brandsRefinements span.a-size-base"));
+		for(WebElement mobileBrand : mobileBrands ) {
+			if(mobileBrand.getText().equalsIgnoreCase("Redmi")) {
+				mobileBrand.click();
+				break;
+			}
+		}
+			
 		
 	}
+	
 		
 		
 	@Test
