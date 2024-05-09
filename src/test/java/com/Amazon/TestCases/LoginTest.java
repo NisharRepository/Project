@@ -90,7 +90,7 @@ public class LoginTest extends BaseTest {
 		a.moveToElement(accountLists).build().perform();
 		try {
 		WebElement signOut = driver.findElement(By.cssSelector("#nav-item-signout"));
-		if(signOut.isDisplayed()== true) {
+		if(signOut.isDisplayed()) {
 			System.out.println("Verification Done : Login Sucessful");
 		}
 		}

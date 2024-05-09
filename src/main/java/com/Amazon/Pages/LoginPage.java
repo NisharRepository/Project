@@ -43,7 +43,7 @@ public class LoginPage extends BasePage {
 		if(userEmail.isEnabled()) {
 			userEmail.sendKeys(mobile + Keys.ENTER);
 		}
-		if(userPassword.isEnabled()== true) {
+		if(userPassword.isEnabled()) {
 			userPassword.sendKeys(password +Keys.ENTER);
 		}
 		ProductSearchPage productSearchPage = new ProductSearchPage(driver);
