@@ -48,6 +48,7 @@ public class Listener extends BaseTest implements ITestListener {
 		}
 		test.addScreenCaptureFromPath(destinationPath, result.getMethod().getMethodName());
 
+
 	   
 	  }
 

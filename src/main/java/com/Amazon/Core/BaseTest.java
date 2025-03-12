@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 
 import com.Amazon.Pages.LoginPage;
 
-public class BaseTest {
+public class BaseTest extends Variables {
 	
 	protected WebDriver driver;
 	public LoginPage loginpage;
@@ -17,7 +17,7 @@ public class BaseTest {
 	
 	//@BeforeMethod
 	public void initializeDriver() {
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\Browser-Driver\\chromedriver-win64\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Browser-Driver\\ChromeDriver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		loginpage = new LoginPage( driver);

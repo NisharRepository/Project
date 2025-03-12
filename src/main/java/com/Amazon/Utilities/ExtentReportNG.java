@@ -13,7 +13,7 @@ public class ExtentReportNG {
 		
 		String fullPath = "C:\\Users\\ni903\\eclipse-workspace\\Live Projects\\Reports//Index.html";
 		//OR
-		String path1 = System.getProperty("user.dir")+"Reports/Index.html";
+		String path1 = System.getProperty("user.dir")+"/Reports/Index.html";
 		//OR
 		String relativePath = "./Reports/Index.html";
 		//OR 

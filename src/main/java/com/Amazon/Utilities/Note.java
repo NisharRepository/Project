@@ -1,4 +1,4 @@
-package com.Amazon.Utilities;
+ package com.Amazon.Utilities;
 
 public class Note {
 	
@@ -17,6 +17,19 @@ public class Note {
 //	a-private SyncUtil syncUtil;
 //	b-this.syncUtil = new SyncUtil(driver);//use this statement in constructor of the loginpage
 //	c- use the method of SyncUtil Class
+	
+	
+	//***************TestNG Listener************
+//	Benefits of Listener
+//	
+//	1-Enhanced Test Reporting---When a test passes, fails, or is skipped.you can log this data into a file or integrate it with reporting tools like Extent Reports
+//	2- Automated Failure Handling---Take a screenshot.Capture logs or system states (e.g., browser logs, console output, etc.).Retry the failed test automatically.
+//	3- Seamless Integration with Other Tools---Selenium,Log4j/SLF4J,CI/CD Pipelines
+	
+//	How to Add Listener
+//	
+//	1. Create a TestNG Listener Class and You need to implement the ITestListener or ISuiteListener interface.
+//	2. Add Listener to TestNG XML Configuration
 	
 	
 	//***************ScreenShot************

@@ -5,9 +5,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 public class BrowserFactory {
+	
 	//Location to the executable driver
-		public static final String CHROME_DRIVER_PATH = "C:\\Users\\Browser-Driver\\chromedriver-win64\\chromedriver.exe";
-		public static final String EDGE_DRIVER_PATH = "C:\\Users\\Browser-Driver\\edgedriver_win64\\msedgedriver.exe";
+		public static final String CHROME_DRIVER_PATH = "C:\\Browser-Driver\\ChromeDriver\\chromedriver.exe";
+		public static final String EDGE_DRIVER_PATH = "C:\\Browser-Driver\\EdgeDriver\\msedgedriver.exe";
 		
 		//Browser name to run tests on		
 		public static final String BROWSER_NAME = "Chrome";

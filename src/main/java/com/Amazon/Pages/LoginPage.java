@@ -11,14 +11,14 @@ import com.Amazon.Utilities.SyncUtil;
 
 public class LoginPage extends BasePage {
 	
-	private WebDriver driver;
+	//private WebDriver driver;
 	private SyncUtil syncUtil;
 	
 	public LoginPage(WebDriver driver) {
 		super(driver);
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
-		this.syncUtil = new SyncUtil(driver);
+		this.syncUtil = new SyncUtil(driver);		
 	}
 	
 	
